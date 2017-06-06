@@ -1,0 +1,39 @@
+@font-face {
+  font-family: Soho;
+  src: url("http://anagemescu.com/css/../fonts/SohoGothicPro-Medium.otf");
+  font-family: SohoRegular;
+  src: url("http://anagemescu.com/css/../fonts/SohoGothicPro-Regularm.otf");
+  font-family: SohoLight;
+  src: url("http://anagemescu.com/css/../fonts/SohoGothicPro-Light.otf"); }
+html, body, .container-fluid, .h-100 {
+  height: 100%;
+  font-family: SohoLight;
+  color: #4b5656; }
+
+footer {
+  padding: 35px; }
+  footer > div > div {
+    transition: all 1s linear; }
+    footer > div > div > img {
+      width: 85px; }
+    footer > div > div:hover {
+      transform: scale(1.5);
+      transition: all 1s linear; }
+      footer > div > div:hover > p {
+        transition: all 1s linear;
+        opacity: 1; }
+    footer > div > div > p {
+      transition: all 1s linear;
+      opacity: 0;
+      font-size: 0.75em; }
+
+h1, h2 {
+  padding-top: 70px; }
+
+h2 {
+  font-weight: lighter; }
+
+.content {
+  display: none; }
+
+/*# sourceMappingURL=master.css.map */
