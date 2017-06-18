@@ -1,3 +1,14 @@
+@mixin animation(){
+  transform: scale(1.5);
+  transition: all 1s linear;
+}
+
+@mixin background($position,$url){
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: $position;
+}
+
 $padd:35px;
 $font: SohoLight;
 $clr:#4b5656;
@@ -8,16 +19,15 @@ html , body , .container-fluid, .h-100{
   color:$clr;
 }
 
-footer{
-  padding:$padd;
-  & > div > div{
+// First Page
+.menu, .left > div{
+  &  > div{
     transition: all 1s linear;
     & > img {
       width:85px;
     }
     &:hover {
-      transform: scale(1.5);
-      transition: all 1s linear;
+      @include animation;
       & > p{
         transition: all 1s linear;
         opacity:1;
@@ -34,10 +44,70 @@ footer{
 h1, h2 {
   padding-top: $padd * 2;
 }
-h2{
-  font-weight: lighter;
+
+// Rest of the pages
+.right{
+  & > img{
+    transition: all 1s linear;
+    &:hover{
+      transform: translateY(-50px);
+      transition: all 1s linear;
+    }
+  }
+  & > p {
+    opacity: 0;
+    transition: all 1s linear;
+  }
+  &:hover > p{
+    opacity: 1;
+    transition: all 1s linear;
+  }
 }
 
-.content{
-  display:none;
+.media{
+    @include background(top 5% right 0%,"../img/section2.png");
+}
+
+.fashion{
+  @include background(top 0%,"../img/section3.png");
+  background-size: 100% 50%;
+}
+
+.others{
+  @include background(bottom 0% left 5%,"../img/section1.png");
+
+}
+
+.contact{
+  @include background(top 5% left 0%,"../img/btn5.png");
+}
+
+footer{
+  padding:$padd;
+}
+.social{
+  & > a {
+    color:$clr;
+    &:hover{
+      color:grey;
+    }
+  }
+}
+
+@media(min-width: 960px) {
+
+  .left > div{
+    width:100px;
+    margin:0 auto;
+  }
+
+  .social{
+    position: fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    width:50px;
+    margin:auto;
+    height:200px;
+  }
 }
