@@ -1,5 +1,9 @@
-@mixin animation(){
-  transform: scale(1.5);
+@mixin animation($size){
+  transform: scale($size);
+  transition: all 1s linear;
+}
+@mixin animation-right{
+  transform: translateY(-20px);
   transition: all 1s linear;
 }
 
@@ -9,25 +13,29 @@
   background-position: $position;
 }
 
-$padd:35px;
+
+$padd: 7px;
 $font: SohoLight;
 $clr:#4b5656;
 
-html , body , .container-fluid, .h-100{
+html , body , .container-fluid, .row{
   height:100%;
   font-family: $font;
   color:$clr;
 }
 
 // First Page
-.menu, .left > div{
-  &  > div{
+.menu{
+  list-style-type: none;
+  &  > li{
+    padding: $padd;
+    display: inline-block;
     transition: all 1s linear;
     & > img {
       width:85px;
     }
     &:hover {
-      @include animation;
+      @include animation(1.5);
       & > p{
         transition: all 1s linear;
         opacity:1;
@@ -42,19 +50,21 @@ html , body , .container-fluid, .h-100{
 }
 
 h1, h2 {
-  padding-top: $padd * 2;
+  padding: $padd * 8;
 }
 
 // Rest of the pages
 .right{
+  text-align: center;
   & > img{
     transition: all 1s linear;
     &:hover{
-      transform: translateY(-50px);
-      transition: all 1s linear;
+        @include animation-right();
     }
   }
   & > p {
+    padding-top:$padd;
+    padding-left: $padd * 2;
     opacity: 0;
     transition: all 1s linear;
   }
@@ -70,21 +80,27 @@ h1, h2 {
 
 .fashion{
   @include background(top 0%,"../img/section3.png");
-  background-size: 100% 50%;
 }
 
-.others{
-  @include background(bottom 0% left 5%,"../img/section1.png");
-
+.miscelanious{
+  @include background(bottom 0% right 0%,"../img/section4.png");
 }
 
 .contact{
-  @include background(top 5% left 0%,"../img/btn5.png");
+  @include background(top 5% left 0%,"../img/section5.png");
+}
+
+
+.scroll{
+  &::-webkit-scrollbar {display:none;};
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 footer{
   padding:$padd;
 }
+
 .social{
   & > a {
     color:$clr;
@@ -95,10 +111,14 @@ footer{
 }
 
 @media(min-width: 960px) {
+  .right{
+    text-align: left;
+  }
 
-  .left > div{
-    width:100px;
-    margin:0 auto;
+  .menu{
+    & > li {
+      padding:$padd * 2;
+    }
   }
 
   .social{

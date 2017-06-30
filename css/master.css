@@ -1,37 +1,45 @@
-html, body, .container-fluid, .h-100 {
+html, body, .container-fluid, .row {
   height: 100%;
   font-family: SohoLight;
   color: #4b5656; }
 
-.menu > div, .left > div > div {
-  transition: all 1s linear; }
-  .menu > div > img, .left > div > div > img {
-    width: 85px; }
-  .menu > div:hover, .left > div > div:hover {
-    transform: scale(1.5);
+.menu {
+  list-style-type: none; }
+  .menu > li {
+    padding: 7px;
+    display: inline-block;
     transition: all 1s linear; }
-    .menu > div:hover > p, .left > div > div:hover > p {
+    .menu > li > img {
+      width: 85px; }
+    .menu > li:hover {
+      transform: scale(1.5);
+      transition: all 1s linear; }
+      .menu > li:hover > p {
+        transition: all 1s linear;
+        opacity: 1; }
+    .menu > li > p {
       transition: all 1s linear;
-      opacity: 1; }
-  .menu > div > p, .left > div > div > p {
-    transition: all 1s linear;
-    opacity: 0;
-    font-size: 0.75em; }
+      opacity: 0;
+      font-size: 0.75em; }
 
 h1, h2 {
-  padding-top: 70px; }
+  padding: 56px; }
 
-.right > img {
-  transition: all 1s linear; }
-  .right > img:hover {
-    transform: translateY(-50px);
+.right {
+  text-align: center; }
+  .right > img {
     transition: all 1s linear; }
-.right > p {
-  opacity: 0;
-  transition: all 1s linear; }
-.right:hover > p {
-  opacity: 1;
-  transition: all 1s linear; }
+    .right > img:hover {
+      transform: translateY(-20px);
+      transition: all 1s linear; }
+  .right > p {
+    padding-top: 7px;
+    padding-left: 14px;
+    opacity: 0;
+    transition: all 1s linear; }
+  .right:hover > p {
+    opacity: 1;
+    transition: all 1s linear; }
 
 .media {
   background-image: url("../img/section2.png");
@@ -41,21 +49,26 @@ h1, h2 {
 .fashion {
   background-image: url("../img/section3.png");
   background-repeat: no-repeat;
-  background-position: top 0%;
-  background-size: 100% 50%; }
+  background-position: top 0%; }
 
-.others {
-  background-image: url("../img/section1.png");
+.miscelanious {
+  background-image: url("../img/section4.png");
   background-repeat: no-repeat;
-  background-position: bottom 0% left 5%; }
+  background-position: bottom 0% right 0%; }
 
 .contact {
-  background-image: url("../img/btn5.png");
+  background-image: url("../img/section5.png");
   background-repeat: no-repeat;
   background-position: top 5% left 0%; }
 
+.scroll {
+  overflow-y: scroll;
+  overflow-x: hidden; }
+  .scroll::-webkit-scrollbar {
+    display: none; }
+
 footer {
-  padding: 35px; }
+  padding: 7px; }
 
 .social > a {
   color: #4b5656; }
@@ -63,9 +76,11 @@ footer {
     color: grey; }
 
 @media (min-width: 960px) {
-  .left > div {
-    width: 100px;
-    margin: 0 auto; }
+  .right {
+    text-align: left; }
+
+  .menu > li {
+    padding: 14px; }
 
   .social {
     position: fixed;
