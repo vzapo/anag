@@ -1,3 +1,10 @@
+@keyframes arrow-animation {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 html, body, .container-fluid, .row {
   height: 100%;
   font-family: SohoLight;
@@ -23,7 +30,7 @@ html, body, .container-fluid, .row {
       font-size: 0.75em; }
 
 h1, h2 {
-  padding: 56px; }
+  padding: 70px; }
 
 .right {
   text-align: center; }
@@ -49,7 +56,8 @@ h1, h2 {
 .fashion {
   background-image: url("../img/section3.png");
   background-repeat: no-repeat;
-  background-position: top 0%; }
+  background-position: top 0%;
+  background-size: 100%; }
 
 .miscelanious {
   background-image: url("../img/section4.png");
@@ -61,10 +69,16 @@ h1, h2 {
   background-repeat: no-repeat;
   background-position: top 5% left 0%; }
 
-.scroll {
+.fa-arrow-down {
+  padding-top: 70px;
+  opacity: 0;
+  animation: arrow-animation 3s; }
+
+.mid {
   overflow-y: scroll;
-  overflow-x: hidden; }
-  .scroll::-webkit-scrollbar {
+  overflow-x: hidden;
+  height: 100%; }
+  .mid::-webkit-scrollbar {
     display: none; }
 
 footer {

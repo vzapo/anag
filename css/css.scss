@@ -13,6 +13,11 @@
   background-position: $position;
 }
 
+@keyframes arrow-animation {
+  0% {opacity:0}
+  50% {opacity:1}
+  100% {opacity:0;}
+}
 
 $padd: 7px;
 $font: SohoLight;
@@ -50,7 +55,7 @@ html , body , .container-fluid, .row{
 }
 
 h1, h2 {
-  padding: $padd * 8;
+  padding: $padd * 10;
 }
 
 // Rest of the pages
@@ -80,6 +85,7 @@ h1, h2 {
 
 .fashion{
   @include background(top 0%,"../img/section3.png");
+  background-size: 100%;
 }
 
 .miscelanious{
@@ -90,11 +96,16 @@ h1, h2 {
   @include background(top 5% left 0%,"../img/section5.png");
 }
 
-
-.scroll{
+.fa-arrow-down{
+  padding-top:$padd *10;
+  opacity:0;
+  animation: arrow-animation 3s ;
+}
+.mid{
   &::-webkit-scrollbar {display:none;};
   overflow-y: scroll;
   overflow-x: hidden;
+  height:100%;
 }
 
 footer{
