@@ -1,7 +1,13 @@
+@font-face {
+    font-family: font;
+    src: url('../fonts/font.otf');
+}
+
 @mixin animation($size){
   transform: scale($size);
   transition: all 1s linear;
 }
+
 @mixin animation-right{
   transform: translateY(-20px);
   transition: all 1s linear;
@@ -11,6 +17,7 @@
   background-image: url($url);
   background-repeat: no-repeat;
   background-position: $position;
+  transition: 1s all linear;
 }
 
 @keyframes arrow-animation {
@@ -23,14 +30,19 @@ $padd: 7px;
 $font: SohoLight;
 $clr:#4b5656;
 
+
+// Website view
 html , body , .container-fluid, .row{
   height:100%;
   font-family: $font;
   color:$clr;
+  font-family: font;
 }
 
 // First Page
 .menu{
+  margin:0;
+  padding:0;
   list-style-type: none;
   &  > li{
     padding: $padd;
@@ -39,23 +51,19 @@ html , body , .container-fluid, .row{
     & > img {
       width:85px;
     }
-    &:hover {
-      @include animation(1.5);
-      & > p{
-        transition: all 1s linear;
-        opacity:1;
-      }
-    }
     & > p{
-      transition: all 1s linear;
-      opacity:0;
-      font-size:0.75em;
+      opacity:1;
     }
   }
 }
 
 h1, h2 {
-  padding: $padd * 10;
+  margin-top: $padd * 10;
+}
+
+.page{
+  transition: 1s all linear;
+  opacity:0;
 }
 
 // Rest of the pages
@@ -67,15 +75,8 @@ h1, h2 {
         @include animation-right();
     }
   }
-  & > p {
-    padding-top:$padd;
-    padding-left: $padd * 2;
-    opacity: 0;
-    transition: all 1s linear;
-  }
-  &:hover > p{
-    opacity: 1;
-    transition: all 1s linear;
+  & > p{
+    opacity:1;
   }
 }
 
@@ -88,12 +89,34 @@ h1, h2 {
   background-size: 100%;
 }
 
-.miscelanious{
+.miscellaneous{
   @include background(bottom 0% right 0%,"../img/section4.png");
 }
 
 .contact{
   @include background(top 5% left 0%,"../img/section5.png");
+}
+
+.article{
+  height:100%;
+  width:100%;
+  background-size: cover;
+  margin-top:$padd * 3;
+  margin-bottom:$padd * 3;
+  & h3,p{
+    padding-top:$padd * 4;
+    opacity:0;
+    background:white;
+    transition: 1s all linear;
+  }
+  &:hover > p{
+    transition: 1s all linear;
+    opacity:1;
+  }
+  &:hover > h3{
+    transition: 1s all linear;
+    opacity:1;
+  }
 }
 
 .fa-arrow-down{
@@ -113,7 +136,13 @@ footer{
 }
 
 .social{
+  width: 100%;
+  text-align: center;
+  padding:$padd;
+  top:0;
+  position: absolute;
   & > a {
+    margin:$padd;
     color:$clr;
     &:hover{
       color:grey;
@@ -121,17 +150,46 @@ footer{
   }
 }
 
+
+// Desktop and tablets view
 @media(min-width: 960px) {
   .right{
     text-align: left;
-  }
-
-  .menu{
-    & > li {
-      padding:$padd * 2;
+    & > p {
+      padding-top:$padd;
+      padding-left: $padd * 2;
+      opacity: 0;
+      transition: all 1s linear;
+    }
+    &:hover > p{
+      opacity: 1;
+      transition: all 1s linear;
     }
   }
 
+  .menu{
+    margin-top:$padd * 10;
+    & > li {
+      padding:$padd * 2;
+    &:hover {
+      @include animation(1.5);
+      & > p{
+        transition: all 1s linear;
+        opacity:1;
+      }
+    }
+    & > p{
+      transition: all 1s linear;
+      opacity:0;
+      font-size:0.75em;
+      }
+    }
+  }
+
+  h1, h2 {
+    padding-top: $padd * 10;
+    margin-top:0;
+  }
   .social{
     position: fixed;
     top:0;
