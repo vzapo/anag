@@ -63,7 +63,6 @@ h1, h2 {
 
 .page{
   transition: 1s all linear;
-  opacity:0;
 }
 
 // Rest of the pages
@@ -78,6 +77,10 @@ h1, h2 {
   & > p{
     opacity:1;
   }
+}
+
+.product-design{
+  @include background(bottom 0% left 5%,"../img/section1.png");
 }
 
 .media{
@@ -98,9 +101,10 @@ h1, h2 {
 }
 
 .article{
-  height:100%;
+  height:auto;
   width:100%;
-  background-size: cover;
+  background-size: 100%;
+  background-repeat: no-repeat;
   margin-top:$padd * 3;
   margin-bottom:$padd * 3;
   & h3,p{
@@ -139,8 +143,7 @@ footer{
   width: 100%;
   text-align: center;
   padding:$padd;
-  top:0;
-  position: absolute;
+
   & > a {
     margin:$padd;
     color:$clr;
@@ -152,7 +155,15 @@ footer{
 
 
 // Desktop and tablets view
-@media(min-width: 960px) {
+@media(min-width: 767px) {
+  .article{
+    background-size: cover;
+    height:100%;
+  }
+  .page{
+    opacity:0;
+  }
+
   .right{
     text-align: left;
     & > p {

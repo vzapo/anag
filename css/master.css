@@ -31,8 +31,7 @@ h1, h2 {
   margin-top: 70px; }
 
 .page {
-  transition: 1s all linear;
-  opacity: 0; }
+  transition: 1s all linear; }
 
 .right {
   text-align: center; }
@@ -43,6 +42,12 @@ h1, h2 {
       transition: all 1s linear; }
   .right > p {
     opacity: 1; }
+
+.product-design {
+  background-image: url("../img/section1.png");
+  background-repeat: no-repeat;
+  background-position: bottom 0% left 5%;
+  transition: 1s all linear; }
 
 .media {
   background-image: url("../img/section2.png");
@@ -70,9 +75,10 @@ h1, h2 {
   transition: 1s all linear; }
 
 .article {
-  height: 100%;
+  height: auto;
   width: 100%;
-  background-size: cover;
+  background-size: 100%;
+  background-repeat: no-repeat;
   margin-top: 21px;
   margin-bottom: 21px; }
   .article h3, .article p {
@@ -105,16 +111,21 @@ footer {
 .social {
   width: 100%;
   text-align: center;
-  padding: 7px;
-  top: 0;
-  position: absolute; }
+  padding: 7px; }
   .social > a {
     margin: 7px;
     color: #4b5656; }
     .social > a:hover {
       color: grey; }
 
-@media (min-width: 960px) {
+@media (min-width: 767px) {
+  .article {
+    background-size: cover;
+    height: 100%; }
+
+  .page {
+    opacity: 0; }
+
   .right {
     text-align: left; }
     .right > p {

@@ -1,7 +1,14 @@
 function Website(){
   this.body = document.getElementsByClassName('container-fluid')[0],
   this.data = [
-    {"page":"home","data":"","image":"img/btn0.png"},
+    {"page":"product-design","data":["<h3>Card Board Redaing Chair - 2015, Ro, UVT, AD</h3>\
+<p>This chair prototype is my proposal for a school project where we were supposed to design a cardboard chair with a good structure using as less material as possible. Since it's an on a budget thing, I managed to bring the production cost to 15€ although it could be even 0€ if using reused cardboard. The design is 100% cardboard, no glue required, can vary from holding 100 kg (highest weight tested) to children sized ones, DIY project. Also the design is very ergonomic so that you can relax in various positions while reading or having other sitting activities.</p>","<h3>iAmestec / iStir</h3>\
+<p>I made this prototype as a response at a school project based on recycled/repurposed design in my first year of my bachelor degree. It is a stirring object for when you are boiling fruit to make a gem, for example, and the consistent bubbles jump out and burn you or similar situations. It is build from a broken plastic mixing machine, a plastic cup, some metal frame and a metal net.</p>","<h3>The unreliable chair - 2014, Ro, UVT, AD</h3>\
+<p>Impossible design/ useless design concept brought up for another school theme. It looks like a normal chair at first sight but the thing is that it's a chair that you shouldn't trust leaning your back on. The back-rest is designed as a bar door so that when you want to rest on it, it will just open and let you fall</p>","<h3>Designer's working desk - 2013, Ro, UVT, AD</h3>\
+<p>A mini model I made for school. The model is scale reduced so that you can see the actual proportions. it's ergonomically designed to satisfy a designer's needs when desk working in normal and optimum positions.</p>","<h3>Bionic Study - 2012, Ro, UVT, AD</h3>\
+<p>A work i enjoyed very much in the Product Design class where we had to chose any bionic, natural shape we each want, study it as it is, simplify it, create a geometry interpretation and than make a 3D model. For my crab study model i used thin carton sticked with paper glue.</p>","<h3>Kitchen Tools Set - 2012, Ro, UVT, AD</h3>\
+<p>This is a set of six necessary kitchen tools with a multifunctional, modular stand. The design is playful and at the same geometric and minimalistic so that you can easily integrate anywhere. Because of it's color palette it could suite almost any kitchen. Cheap, recycled materials could be used for producing this set. A combination of heat resistant plastic for the body, rubber for the grip pins on each one, also rubber for the pins.</p>","<h3>Moka Pot/ European Espresso Coffee Maker - 2012, Ro, UVT, AD</h3>\
+<p>A concept i realized in my first year of university. The object was created as a stylish product which combines two materials in a minimalistic elegant design. The upper part, made out of transparent glass let's you visually enjoy half of the beautiful process of coffee making and also allows you to serve with at table due to it's sealing system when unscrewed.</p>"],"image":"img/btn0.png"},
     {"page":"media","data":["<iframe width='100%' height='350' src='https://www.youtube.com/embed/ZmsTjOZ_K_E' frameborder='0' allowfullscreen></iframe>",'<iframe width="100%" height="350" src="https://www.youtube.com/embed/zmP5Wq43Nb8" frameborder="0" allowfullscreen></iframe>','<iframe width="100%" height="350" src="https://www.youtube.com/embed/q9tfacRg_Qk" frameborder="0" allowfullscreen></iframe>','<iframe width="100%" height="350" src="https://www.youtube.com/embed/LvlF-sr49hQ" frameborder="0" allowfullscreen></iframe>'],"image":"img/btn1.png"},
     {"page":"fashion","data":["<h3>High School Diploma Work - Accessory set for neck and wrist - 2012, Art Highschool of Timisoara, Fashion Design</h3>\
 <p>This is the front view of my neck accessory inspired by the lemur. The design concept and manufacturing is 100% my work. As main materials i used cooper and brass.</p>\
@@ -87,7 +94,7 @@ Website.prototype.init = function(){
    this.menu(col);
    row.appendChild(col);
    this.footerShow(row);
-   this.contact(document.body);
+   this.contact(row);
    this.body.appendChild(row);
 }
 
@@ -109,11 +116,7 @@ Website.prototype.menu = function(parent){
       list_item.id = this.data[item].page;
       list_item.appendChild(name);
       list_item.onclick = function(){
-        if(this.id !=="home"){
-          self.goToPage(this.id);
-        }else{
-          self.init();
-        }
+        self.goToPage(this.id);
       }
       list.append(list_item)
       parent.appendChild(list);
@@ -121,8 +124,9 @@ Website.prototype.menu = function(parent){
 }
 
 Website.prototype.goToPage = function(parent){
+  var self = this;
   // Erase content to be sure nothing overlaps
-  this.body.innerHTML='';
+  self.body.innerHTML='';
 
   // Set page to start from top
   window.scrollTo(0,0);
@@ -156,7 +160,7 @@ Website.prototype.goToPage = function(parent){
   }
 
   // Creating content for left section
-  this.menu(col_left_section);
+  self.menu(col_left_section);
   //Creating mid section content
 
   for(item in this.data){
@@ -172,37 +176,42 @@ Website.prototype.goToPage = function(parent){
         container.innerHTML += this.data[item].data[i];
         col_mid_section.appendChild(container);
       }
-      window.addEventListener('scroll',function(){
-        if(this.scrollY > 300 && window.innerWidth > 767){
-          document.getElementsByClassName(parent)[0].style.opacity=0;
-          document.getElementsByClassName('page')[0].style.opacity=1;
-        }else{
-          document.getElementsByClassName(parent)[0].style.opacity=1;
-          document.getElementsByClassName('page')[0].style.opacity=0;
-        }
-      })
     }
   }
+
+  window.addEventListener('scroll',function(){
+    if(this.scrollY > 300 && window.innerWidth > 340 ){
+      document.getElementsByClassName(parent)[0].style.opacity=0;
+      document.getElementsByClassName('page')[0].style.opacity=1;
+    }else{
+      document.getElementsByClassName(parent)[0].style.opacity=1;
+      document.getElementsByClassName('page')[0].style.opacity=0;
+    }
+  })
 
   // Creating right section content
   var image = document.createElement('img');
   image.src = 'img/homebtn.png';
   image.className = 'img-fluid';
   var name = document.createElement('p');
-  name.appendChild(document.createTextNode(this.data[0].page));
+  name.appendChild(document.createTextNode('home'));
+  image.onclick=function(){
+    self.init();
+  }
   col_right_section.appendChild(image);
   col_right_section.appendChild(name);
 
   // Append elements to site container
-  this.body.append(row_header);
+  self.body.append(row_header);
   row.appendChild(col_left_section);
   row.appendChild(col_mid_section);
   row.appendChild(col_right_section);
-  this.footerShow(row);
-  this.contact(document.body);
-  this.body.appendChild(row);
-  //Check if page is not home to set width so items fall
-  if(parent.id !== "home" && window.innerWidth > 767){
+  self.footerShow(row);
+  self.body.appendChild(row);
+  self.contact(row);
+
+  //Check if page is set to width so items fall
+  if(window.innerWidth > 767){
     var menu_width = document.getElementsByClassName('menu')[0].style;
     menu_width.width = "175px";
   }
