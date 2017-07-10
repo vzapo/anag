@@ -1,11 +1,5 @@
 function Website(){
   this.body = document.getElementsByClassName('container-fluid')[0],
-  // To add new data to a page copy the below text between quotes:
-  //
-  // "<h3> title </h3>\
-  //  <p> desc </p>"
-  //
-  // in data object after comma, for example i've put where below
   this.data = [
     {"page":"product-design",
     "data":["<h3>Card Board Redaing Chair - 2015, Ro, UVT, AD</h3>\
@@ -111,14 +105,12 @@ Website.prototype.init = function(){
    col.className = 'col-xs-12 col-md-12 col-lg-12';
    if(document.body.style.width > 767){
       col.className += 'align-self-center';
-   }else{
-     col.className = 'col-xs-12 col-md-12 col-lg-12';
    }
-
+  
    var title = document.createElement('h1'),
-      subtitle= document.createElement('h2');
-   var title_text = document.createTextNode('Ana Gemescu');
-   var subtitle_text = document.createTextNode('- portifolio -');
+       subtitle= document.createElement('h2');
+   var title_text = document.createTextNode('Ana Gemescu'),
+       subtitle_text = document.createTextNode('- portifolio -');
 
    title.className = 'col-xs-12 col-md-12 col-lg-12 text-center';
    subtitle.className = 'col-xs-12 col-md-12 col-lg-12 text-center';
@@ -183,24 +175,21 @@ Website.prototype.goToPage = function(parent){
   col_right_section.className = 'col-xs-12 col-md-2 col-lg-2 right align-self-end';
 
   // Creating the content of each section
-  // Headers appearing first
-  var header = document.createElement('h1');
-  for(item in this.data){
-    if(parent == this.data[item].page){
-      var arrow = "<i class='fa fa-arrow-down fa-4' aria-hidden='true'></i>";
-      header.innerHTML = this.data[item].page  + " <br> " + arrow;
-      row_header.className += ' ' + this.data[item].page;
-      col_header.appendChild(header);
-      row_header.appendChild(col_header);
-    }
-  }
-
+  
   // Creating content for left section
   self.menu(col_left_section);
   //Creating mid section content
 
   for(item in this.data){
     if(parent == this.data[item].page){
+      // Headers appearing first
+      var header = document.createElement('h1');    
+      var arrow = "<i class='fa fa-arrow-down fa-4' aria-hidden='true'></i>";
+      header.innerHTML = this.data[item].page  + " <br> " + arrow;
+      row_header.className += ' ' + this.data[item].page;
+      col_header.appendChild(header);
+      row_header.appendChild(col_header);
+      
       for(i=0;i<this.data[item].data.length;i++){
         var container = document.createElement('div');
         if(parent !== 'media' && parent !== 'contact'){
